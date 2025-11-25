@@ -30,8 +30,15 @@ HOW TO SWITCH TO DATABRICKS LATER:
 
 import csv
 import logging
+import sys
+import os
 from pathlib import Path
 from typing import List, Optional, Dict, Any
+
+# Add the project root to Python path (fixes Streamlit Cloud imports)
+PROJECT_ROOT = Path(__file__).parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from models_v2 import (
     School, 
