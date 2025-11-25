@@ -18,6 +18,14 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import logging
+import sys
+import os
+from pathlib import Path
+
+# Add the project root to Python path (fixes Streamlit Cloud imports)
+PROJECT_ROOT = Path(__file__).parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import our modules
 from school_intelligence_service import get_intelligence_service
@@ -459,3 +467,5 @@ def display_full_details(school: School):
 
 if __name__ == "__main__":
     main()
+
+
