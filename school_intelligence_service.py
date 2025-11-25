@@ -23,9 +23,16 @@ HOW TO USE:
 import logging
 import json
 import hashlib
+import sys
+import os
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
+
+# Add the project root to Python path (fixes Streamlit Cloud imports)
+PROJECT_ROOT = Path(__file__).parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from models_v2 import School, ConversationStarter, ConversationStarterResponse
 from data_loader import DataLoader, get_data_loader
@@ -374,3 +381,4 @@ if __name__ == "__main__":
     #     for s in school.conversation_starters:
     #         print(f"\n   Topic: {s.topic}")
     #         print(f"   {s.detail}")
+
